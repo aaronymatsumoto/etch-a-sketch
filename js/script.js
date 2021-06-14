@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('#grid-container');
-let cell = [];
+
+let gridSize = 16;
 
 
 function makeGrid(size) {
@@ -9,10 +10,14 @@ function makeGrid(size) {
 	//gridContainer.style.cssText = `grid-template-columns: repeat(${size}, 1fr); grid-template-rows: repeat(${size}, 1fr)`;
 
 	for (let i = 0; i < (size * size); i++) {
-		cell[i] = document.createElement("div");
-		cell[i].classList = "cell";
-		gridContainer.appendChild(cell[i]);
+		let cell = document.createElement("div");
+		cell.classList = "cell";
+		gridContainer.appendChild(cell);
 	}
 
 }
-makeGrid(25);
+
+
+
+
+makeGrid(gridSize);
