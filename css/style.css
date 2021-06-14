@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'etchASketch';
-  src:url("/fonts/etchasketch.ttf")
+  src:url("../fonts/etchasketch.ttf");
 }
 
 :root {

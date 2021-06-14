@@ -3,8 +3,12 @@ const controlsContainer = document.querySelector('#controls-container');
 const clearButton = document.querySelector('#clear');
 const colorButton = document.querySelector('#color-buttons');
 const newGridButton = document.querySelector('#new-grid');
-const newSize = document.querySelector('#new-size');
+let newSize = document.querySelector('#new-size');
+
+newSize.value = 16;
 newSize.addEventListener('mousemove', showSize);
+let displaySize = document.querySelector('#size-label');
+displaySize.textContent = newSize.value;
 
 clearButton.addEventListener('click', clear);
 
@@ -29,7 +33,6 @@ function makeGrid(size) {
 function grayColor(e) {
 	e.target.style.backgroundColor = 'rgb(212, 212, 211)';
 }
-
 
 // hover for a rgb color
 function randomColor(e) {
@@ -70,9 +73,7 @@ function selectColor() {
 }
 
 function showSize(){
-	let displaySize = document.querySelector('#size-label');
 	displaySize.textContent = newSize.value;
-  displaySize.textContent = newSize.value;
 }
 
 function clearGrid() {
