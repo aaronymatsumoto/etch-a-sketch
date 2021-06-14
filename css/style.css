@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'etchASketch';
+  src:url("/fonts/etchasketch.ttf")
+}
+
+:root {
+	--row-size: 1;
+	--col-size: 1;
+}
+
+html {
+  background-color: #fde7f9;
+  background: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);
+  background-attachment: fixed;
+  height: 100%;
+}
+
+div {
+  display: block;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+header h1 {
+  text-align: center;
+  font-family: 'etchASketch', Arial, Helvetica, sans-serif;
+}
+
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(var(--col-size), minmax(0,1fr));
+  grid-template-rows: repeat(var(--row-size), minmax(0,1fr));
+  border: 1px solid #a9a9a9;
+  height: 50vw;
+  width: 50vw;
+}
+
+.cell {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  overflow: hidden;
+}  
