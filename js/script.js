@@ -2,6 +2,9 @@ const gridContainer = document.querySelector('#grid-container');
 const controlsContainer = document.querySelector('#controls-container');
 const clearButton = document.querySelector('#clear');
 const colorButton = document.querySelector('#color-buttons');
+const newGridButton = document.querySelector('#new-grid');
+const newSize = document.querySelector('#new-size');
+newSize.addEventListener('mousemove', showSize);
 
 clearButton.addEventListener('click', clear);
 
@@ -16,9 +19,10 @@ function makeGrid(size) {
 	for (let i = 0; i < (size * size); i++) {
 		cell[i] = document.createElement("div");
 		cell[i].classList = "cell";
-		cell[i].addEventListener("mouseover", grayColor);
+		//cell[i].addEventListener("mouseover", selectColor);
 		gridContainer.appendChild(cell[i]);
 	}
+	selectColor();
 }
 
 // set event listener to a certain color
@@ -44,7 +48,9 @@ function clear() {
 }
 
 function selectColor() {
+	console.log(colorButton.color.value);
 	if (colorButton.color.value == 'gray'){
+		clear();
 		cell.forEach(
 			item => {
 				item.removeEventListener("mouseover", randomColor);
@@ -53,6 +59,7 @@ function selectColor() {
 		)
 	}
 	else if (colorButton.color.value == 'random'){
+		clear();
 		cell.forEach(
 			item => {
 				item.removeEventListener("mouseover", grayColor);
@@ -62,5 +69,26 @@ function selectColor() {
 	}
 }
 
-colorButton.addEventListener('click', selectColor);
+function showSize(){
+	let displaySize = document.querySelector('#size-label');
+	displaySize.textContent = newSize.value;
+  displaySize.textContent = newSize.value;
+}
+
+function clearGrid() {
+  document
+    .querySelectorAll(".cell")
+    .forEach((e) => e.parentNode.removeChild(e));
+}
+
+function newGridSize() {
+	clearGrid();
+	makeGrid(newSize.value);
+}
+
 makeGrid(gridSize);
+
+newGridButton.addEventListener('click', newGridSize);
+
+colorButton.addEventListener('click', selectColor);
+
